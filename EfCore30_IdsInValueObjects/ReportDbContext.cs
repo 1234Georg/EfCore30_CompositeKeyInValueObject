@@ -9,7 +9,7 @@ namespace EfCore30_IdsInValueObjects
     public class ReportDbContext : DbContext
     {
         public DbSet<ReportDiagram> ReportDiagrams { get; set; }
-        public DbSet<Reports> Reports { get; set; }
+        public DbSet<Report> Reports { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -21,9 +21,11 @@ namespace EfCore30_IdsInValueObjects
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ReportDiagram>().Property(b => b.Id).HasConversion(idObject => idObject.ToString(), idString => new ReportDiagramId(idString));
+            //conversion only works with single parameter
+            //modelBuilder.Entity<ReportDiagram>().Property(b => b.Id).HasConversion(idObject => idObject.ToString(), idString => new ReportDiagramId());
 
-            modelBuilder.Entity<Reports>().Property(b => b.ReportDiagramId).HasConversion(idObject => idObject.ToString(), idString => new ReportDiagramId(idString));
+            //conversion only works with single parameter
+            //modelBuilder.Entity<Reports>().Property(b => b.ReportDiagramId).HasConversion(idObject => idObject.ToString(), idString => new ReportDiagramId());
 
             base.OnModelCreating(modelBuilder);
         }

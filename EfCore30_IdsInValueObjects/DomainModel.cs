@@ -7,41 +7,24 @@ namespace EfCore30_IdsInValueObjects
 {
     public class ReportDiagram
     {
-        public ReportDiagramId Id { get; private set; }
+        public ReportDiagramId Id { get; set; }
 
-        public string Url { get; private set; }
+        public string Url { get; set; }
 
     }
 
     public class ReportDiagramId
     {
-        public ReportDiagramId(string idString)
-        {
-            var splitted = idString.Split("~");
-            Quarter = splitted[0];
-            Name = splitted[1];
-        }
-        public ReportDiagramId(string quarter, string name)
-        {
-            Quarter = quarter;
-            Name = name;
-        }
-        public string Quarter { get; private set; }
-        public string Name { get; private set; }
-
-        /// <inheritdoc />
-        public override string ToString()
-        {
-            return Quarter + "~" + Name;
-        }
+        public string Quarter { get; set; }
+        public string Name { get; set; }
     }
 
-    public class Reports
+    public class Report
     {
-        public string Id { get; private set; }
+        public string Id { get; set; }
 
-        public string Text { get; private set; }
+        public string Text { get; set; }
 
-        public ReportDiagramId ReportDiagramId { get; private set; }
+        public ReportDiagramId ReportDiagramId { get; set; }
     }
 }
