@@ -1,6 +1,6 @@
 # EfCore30_CompositeKeyInValueObject
 
-Minimal solution for this issue: https://github.com/aspnet/EntityFrameworkCore/issues/15884
+Minimal solution for this issue: https://github.com/aspnet/EntityFrameworkCore/issues/15962
 
 To start it, just press F5
 
