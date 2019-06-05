@@ -18,9 +18,6 @@ namespace EfCore30_IdsInValueObjects.Controllers
         }
         public IActionResult Index()
         {
-            var blog456 = DbContext.ReportDiagrams.Where(p => p.Id == new ReportDiagramId("456")).ToList();
-
-            var postsOfBlog123 = DbContext.Posts.Where(p => p.BlogId == new BlogId("123")).ToList();
             return View();
         }
 

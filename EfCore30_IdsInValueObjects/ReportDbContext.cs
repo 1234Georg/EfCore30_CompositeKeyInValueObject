@@ -21,18 +21,9 @@ namespace EfCore30_IdsInValueObjects
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //with conversion it works, but it is evaluated locally
             modelBuilder.Entity<ReportDiagram>().Property(b => b.Id).HasConversion(idObject => idObject.ToString(), idString => new ReportDiagramId(idString));
 
-            //same as above, the next line does not work, because Post needs an id
-            //modelBuilder.Entity<Post>().OwnsOne(p => p.Id);
-
-            //the next line works, but the following code is evaluated locally: 
-            //var postsOfBlog123 = DbContext.Posts.Where(p => p.BlogId == new BlogId("123")).ToList();
-            //'Error generated for warning 'Microsoft.EntityFrameworkCore.Query.QueryClientEvaluationWarning: The LINQ expression 'where ([p.BlogId] == value(EfCore30_IdsInValueObjects.BlogId))' could not be translated and will be evaluated locally.'. 
-            modelBuilder.Entity<Post>().Property(b => b.Id).HasConversion(idObject => idObject.Value, idString => new PostId(idString));
-
-            modelBuilder.Entity<Post>().OwnsOne(p => p.BlogId);
+            modelBuilder.Entity<Reports>().Property(b => b.ReportDiagramId).HasConversion(idObject => idObject.ToString(), idString => new ReportDiagramId(idString));
 
             base.OnModelCreating(modelBuilder);
         }
